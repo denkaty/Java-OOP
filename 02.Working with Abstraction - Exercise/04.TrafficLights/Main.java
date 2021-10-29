@@ -10,20 +10,29 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
-        TrafficLightsEnum[] lights = Arrays.stream(bufferedReader.readLine().split(" "))
+        TrafficLightsEnum[] inputLights = Arrays.stream(bufferedReader.readLine().split(" "))
                 .map(TrafficLightsEnum::valueOf)
                 .toArray(TrafficLightsEnum[]::new);
 
         int n = Integer.parseInt(bufferedReader.readLine());
 
-        TrafficLightsEnum[] trafficLights = TrafficLightsEnum.values();
+
         for (int i = 0; i < n; i++) {
-            for (int g = 0; g < lights.length; g++) {
-                TrafficLightsEnum light = lights[g];
-                int nextIndex = light.ordinal() + 1;
-                TrafficLightsEnum value = trafficLights[nextIndex% trafficLights.length];
-                lights[g] = value;
-                System.out.print(value + " ");
+            for (int g = 0; g < inputLights.length; g++) {
+                TrafficLightsEnum currentLight = inputLights[g];
+
+                switch (currentLight.name()){
+                    case "RED":
+                        inputLights[g] = TrafficLightsEnum.GREEN;
+                        break;
+                    case "GREEN":
+                        inputLights[g] = TrafficLightsEnum.YELLOW;
+                        break;
+                    case "YELLOW":
+                        inputLights[g] = TrafficLightsEnum.RED;
+                        break;
+                }
+                System.out.print(inputLights[g] + " ");
             }
             System.out.println();
         }
