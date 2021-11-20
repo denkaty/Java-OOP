@@ -20,13 +20,13 @@ public class Topping {
             }
         }
         if (!contains){
-            throw new IllegalStateException("Cannot place " + toppingType + " on top of your pizza.");
+            throw new IllegalStateException("Cannot place " + this.toppingType + " on top of your pizza.");
         }
     }
 
     private void setWeight(double weight) {
-        if (weight < 1 || weight > 200) {
-            throw new IllegalStateException(this.toppingType + " weight should be in the range [1..200].");
+        if (weight < 1 || weight > 50) {
+            throw new IllegalStateException(this.toppingType + " weight should be in the range [1..50].");
         }
         this.weight = weight;
     }

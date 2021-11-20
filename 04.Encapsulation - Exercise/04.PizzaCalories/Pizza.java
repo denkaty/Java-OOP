@@ -6,12 +6,13 @@ import java.util.List;
 public class Pizza {
     private String name;
     private Dough dough;
-    List<Topping> toppings;
+    private List<Topping> toppings;
     private int numberOfToppings;
 
     public Pizza(String name, int numberOfToppings) {
         setName(name);
         setToppings(numberOfToppings);
+        this.toppings = new ArrayList<>();
     }
 
     private void setName(String name) {
@@ -25,7 +26,6 @@ public class Pizza {
         if (numberOfToppings < 0 || numberOfToppings > 10) {
             throw new IllegalStateException("Number of toppings should be in range [0..10].");
         }
-        this.toppings = new ArrayList<>(numberOfToppings);
         this.numberOfToppings = numberOfToppings;
     }
 
